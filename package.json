@@ -1,19 +1,18 @@
 {
-  "name": "pngquant-bin",
-  "version": "3.0.0",
-  "description": "pngquant wrapper that makes it seamlessly available as a local dependency",
+  "name": "wellington-bin",
+  "version": "0.8.1",
+  "description": "wellington wrapper that makes it seamlessly available as a local dependency",
   "license": "MIT",
-  "repository": "imagemin/pngquant-bin",
+  "repository": "astalick/wellington-bin",
   "author": {
-    "name": "Kevin Mårtensson",
-    "email": "kevinmartensson@gmail.com",
-    "url": "kevinmartensson.com"
+    "name": "Andrew Stalick",
+    "email": "astalick@rmn.com"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "bin": {
-    "pngquant": "cli.js"
+    "node-wellington": "cli.js"
   },
   "scripts": {
     "postinstall": "node lib/install.js",
@@ -23,14 +22,6 @@
     "cli.js",
     "index.js",
     "lib"
-  ],
-  "keywords": [
-    "compress",
-    "image",
-    "img",
-    "minify",
-    "optimize",
-    "png"
   ],
   "dependencies": {
     "bin-build": "^2.0.0",

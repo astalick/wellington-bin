@@ -20,40 +20,11 @@ afterEach(function () {
 	rimraf.sync(tmp);
 });
 
-it('rebuild the pngquant binaries', function (cb) {
-	new BinBuild()
-		.src('https://github.com/pornel/pngquant/archive/2.4.1.tar.gz')
-		.cmd('make install BINPREFIX="' + tmp + '"')
-		.run(function (err) {
-			assert(!err);
-			assert(fs.statSync(path.join(tmp, 'pngquant')).isFile());
-			cb();
-		});
-});
-
 it('return path to binary and verify that it is working', function (cb) {
-	binCheck(require('../'), ['--version'], function (err, works) {
+	binCheck(require('../'), ['-version'], function (err, works) {
 		assert(!err);
 		assert(works);
 		cb();
 	});
 });
 
-it('minify a PNG', function (cb) {
-	var src = path.join(__dirname, 'fixtures/test.png');
-	var dest = path.join(tmp, 'test.png');
-	var args = [
-		'-o', dest,
-		src
-	];
-
-	execFile(require('../'), args, function (err) {
-		assert(!err);
-
-		compareSize(src, dest, function (err, res) {
-			assert(!err);
-			assert(res[dest] < res[src]);
-			cb();
-		});
-	});
-});
